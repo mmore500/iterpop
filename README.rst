@@ -43,24 +43,24 @@ iterpop makes popping the value out of a singleton container safe and fun
   ip.popsingleton('ab'})
 
   # returns 'a'
-  ip.pophomogenous(['a'])
-  ip.pophomogenous({'a'})
-  ip.pophomogenous('a')
+  ip.pop homogeneous(['a'])
+  ip.pop homogeneous({'a'})
+  ip.pop homogeneous('a')
 
   # also returns 'a'
-  ip.pophomogenous(['a', 'a'])
-  ip.pophomogenous('aaa')
-  ip.pophomogenous('a' for __ in range(100))
+  ip.pop homogeneous(['a', 'a'])
+  ip.pop homogeneous('aaa')
+  ip.pop homogeneous('a' for __ in range(100))
 
   # throws
-  ip.pophomogenous([])
-  ip.pophomogenous(set())
-  ip.pophomogenous('')
+  ip.pop homogeneous([])
+  ip.pop homogeneous(set())
+  ip.pop homogeneous('')
 
   # throws
-  ip.pophomogenous(['a', 'b'])
-  ip.pophomogenous({'a', 'b'})
-  ip.pophomogenous('ab'})
+  ip.pop homogeneous(['a', 'b'])
+  ip.pop homogeneous({'a', 'b'})
+  ip.pop homogeneous('ab'})
 
 
 Credits

@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-`pophomogenous` tests for `iterpop` package.
+`popsingleton` tests for `iterpop` package.
 '''
 
 import pytest

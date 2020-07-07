@@ -48,15 +48,15 @@ def popsingleton(
 
 
 
-def pophomogenous(
+def pop homogeneous(
     container,
     catch_empty=False,
     catch_heterogeneous=False,
     default=None,
 ):
     '''
-    Extract the value of a homogenous iterator.
-    Raise exceptions or return default value if iterator is not homogenous.
+    Extract the value of a  homogeneous iterator.
+    Raise exceptions or return default value if iterator is not  homogeneous.
     '''
 
     handle1, handle2 = tee(container)

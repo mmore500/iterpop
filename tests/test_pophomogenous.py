@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 
 '''
-`popsingleton` tests for `iterpop` package.
+`pophomogeneous` tests for `iterpop` package.
 '''
 
 import pytest
@@ -10,53 +10,53 @@ import pytest
 from iterpop import iterpop as ip
 
 
-def test_pophomogenous_homogenous():
+def test_pop homogeneous_ homogeneous():
     '''
-    pophomogenous should pop out homogenous values.
+    pop homogeneous should pop out  homogeneous values.
     '''
-    assert ip.pophomogenous([0, 0]) == 0
-    assert ip.pophomogenous(['a']) == 'a'
-    assert ip.pophomogenous('aaaaaaa') == 'a'
-    assert ip.pophomogenous((42 for __ in range(10))) == 42
-    assert ip.pophomogenous({"monty"}) == "monty"
+    assert ip.pop homogeneous([0, 0]) == 0
+    assert ip.pop homogeneous(['a']) == 'a'
+    assert ip.pop homogeneous('aaaaaaa') == 'a'
+    assert ip.pop homogeneous((42 for __ in range(10))) == 42
+    assert ip.pop homogeneous({"monty"}) == "monty"
 
-def test_pophomogenous_empty():
+def test_pop homogeneous_empty():
     '''
-    pophomogenous should pop throw or provide default on empty.
+    pop homogeneous should pop throw or provide default on empty.
     '''
     for container in [], '', set(), range(0), {}:
         with pytest.raises(ValueError) as excinfo:
-            ip.pophomogenous(container)
+            ip.pop homogeneous(container)
         assert 'is empty' in str(excinfo.value)
 
     for container in [], '', set(), range(0), {}:
-        assert ip.pophomogenous(container, catch_empty=True) == None
+        assert ip.pop homogeneous(container, catch_empty=True) == None
 
-def test_pophomogenous_heterogeneous():
+def test_pop homogeneous_heterogeneous():
     '''
-    pophomogenous should pop throw or provide default on heterogenous.
+    pop homogeneous should pop throw or provide default on heterogenous.
     '''
     for container in [1,2], 'ab', {'al','bb'}, range(2), {1:'2', 3:'4'}:
         with pytest.raises(ValueError) as excinfo:
-            ip.pophomogenous(container)
+            ip.pop homogeneous(container)
         assert 'is heterogeneous' in str(excinfo.value)
 
     for container in [1,2], 'ab', {'al','bb'}, range(2), {1:'2', 3:'4'}:
-        assert ip.pophomogenous(container, catch_heterogeneous=True) == None
+        assert ip.pop homogeneous(container, catch_heterogeneous=True) == None
 
-def test_pophomogenous_default():
+def test_pop homogeneous_default():
     '''
-    pophomogenous default should be configurable.
+    pop homogeneous default should be configurable.
     '''
     for container in [], '', set(), range(0), {}:
-        assert ip.pophomogenous(
+        assert ip.pop homogeneous(
             container,
             catch_empty=True,
             default='Madonna'
         ) == 'Madonna'
 
     for container in [1,2], 'ab', {'al','bb'}, range(2), {1:'2', 3:'4'}:
-        assert ip.pophomogenous(
+        assert ip.pop homogeneous(
             container,
             catch_heterogeneous=True,
             default='Cher',
