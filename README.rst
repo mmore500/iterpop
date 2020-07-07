@@ -16,7 +16,7 @@ iterpop
 
 
 
-iterpop makes popping the value out of a singleton container safe and fun
+iterpop makes popping the value out of a singleton container or a homogeneous container safe & fun
 
 
 * Free software: MIT license
