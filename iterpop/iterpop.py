@@ -23,6 +23,16 @@ def _pairwise(iterable):
     next(b, None)
     return zip(a, b)
 
+def _empty(iterable):
+    '''
+    Is iterable empty?
+    '''
+    try:
+        return bool(iterable)
+    # handle "The truth value of a [Pandas] Series is ambiguous."
+    except ValueError:
+        return len(iterable)
+
 def popsingleton(
     container,
     catch_empty=False,
@@ -39,9 +49,9 @@ def popsingleton(
     except ValueError:
         if not _iterable(container):
             raise TypeError(container, 'is not iterable')
-        elif container and not catch_overfull:
+        elif _empty(container) and not catch_overfull:
             raise ValueError(container, 'is overfull')
-        elif not container and not catch_empty:
+        elif not _empty(container) and not catch_empty:
             raise ValueError(container, 'is empty')
 
         return default
@@ -64,14 +74,14 @@ def pophomogeneous(
 
     if not _iterable(handle1):
         raise TypeError(handle1, 'is not iterable')
-    elif not container and not catch_empty:
+    elif not _empty(container) and not catch_empty:
         raise ValueError(handle1, 'is empty')
-    elif container and all(
+    elif _empty(container) and all(
         a == b
         for a, b in _pairwise(handle1)
     ):
         res = next(handle2)
-    elif container and not catch_heterogeneous:
+    elif _empty(container) and not catch_heterogeneous:
         raise ValueError(handle1, 'is heterogeneous')
 
     return res
