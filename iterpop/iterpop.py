@@ -85,3 +85,25 @@ def pophomogeneous(
         raise ValueError(handle1, 'is heterogeneous')
 
     return res
+
+def poursingleton(container, default=None):
+    '''
+    Extract the value of a single-element iterator that might be empty.
+    Return default if iterator is empty.
+    '''
+    return popsingleton(
+        container,
+        catch_empty=True,
+        default=default,
+    )
+
+def pourhomogeneous(container, default=None):
+    '''
+    Extract the value of a homogeneous iterator that might be empty.
+    Return default if iterator is empty.
+    '''
+    return pophomogeneous(
+        container,
+        catch_empty=True,
+        default=default,
+    )

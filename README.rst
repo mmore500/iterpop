@@ -62,6 +62,41 @@ iterpop makes popping the value out of a singleton container or a homogeneous co
   ip.pophomogeneous({'a', 'b'})
   ip.pophomogeneous('ab'})
 
+  # returns 'a'
+  ip.poursingleton(['a'])
+  ip.poursingleton({'a'})
+  ip.poursingleton('a')
+
+  # returns None
+  ip.poursingleton([])
+  ip.poursingleton(set())
+  ip.poursingleton('')
+
+  # throws
+  ip.poursingleton(['a', 'b'])
+  ip.poursingleton({'a', 'b'})
+  ip.poursingleton('ab'})
+
+  # returns 'a'
+  ip.pourhomogeneous(['a'])
+  ip.pourhomogeneous({'a'})
+  ip.pourhomogeneous('a')
+
+  # also returns 'a'
+  ip.pourhomogeneous(['a', 'a'])
+  ip.pourhomogeneous('aaa')
+  ip.pourhomogeneous('a' for __ in range(100))
+
+  # returns None
+  ip.pourhomogeneous([])
+  ip.pourhomogeneous(set())
+  ip.pourhomogeneous('')
+
+  # throws
+  ip.pourhomogeneous(['a', 'b'])
+  ip.pourhomogeneous({'a', 'b'})
+  ip.pourhomogeneous('ab'})
+
 
 Credits
 -------
