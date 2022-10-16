@@ -25,7 +25,7 @@ def test_pourhomogeneous_empty():
     '''
     pourhomogeneous should provide default on empty.
     '''
-    for container in [], '', set(), range(0), {}:
+    for container in [], '', set(), range(0), {}, (x for x in range(0)):
         assert ip.pourhomogeneous(container) is None
 
 def test_pourhomogeneous_heterogeneous():

@@ -69,20 +69,23 @@ def pophomogeneous(
     Raise exceptions or return default value if iterator is not homogeneous.
     '''
 
-    handle1, handle2 = tee(container)
-    res = default
+    if not _iterable(container):
+        raise TypeError(container, 'is not iterable')
 
-    if not _iterable(handle1):
-        raise TypeError(handle1, 'is not iterable')
-    elif not _empty(container) and not catch_empty:
-        raise ValueError(handle1, 'is empty')
-    elif _empty(container) and all(
+    handle1, handle2, handle3 = tee(container, 3)
+    res = default
+    not_empty = any(True for _ in handle1)
+    is_empty = not not_empty
+
+    if is_empty and (not catch_empty):
+        raise ValueError(container, 'is empty')
+    elif not_empty and all(
         a == b
-        for a, b in _pairwise(handle1)
+        for a, b in _pairwise(handle2)
     ):
-        res = next(handle2)
-    elif _empty(container) and not catch_heterogeneous:
-        raise ValueError(handle1, 'is heterogeneous')
+        res = next(handle3)
+    elif not_empty and (not catch_heterogeneous):
+        raise ValueError(container, 'is heterogeneous')
 
     return res
 
